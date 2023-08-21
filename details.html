@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Details</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <img class="logo" src="img/logo.jpeg">
+    <img class="wave" src="img/wave.png">
+    <div class="container2">  
+        <div class="img"> 
+            <img src="img/course.png">
+        </div>
+        <div class="login-content-deatil">
+            <header>
+                <i class="bx bxs-check-shield"></i>
+            </header>
+            <form action="#">
+                <h1>User Details</h1>
+                <div class="input-qua">
+                    <label for="qualification" style="margin-right: 10px;"><h3>Select Qualification :</h3></label>
+                    <select id="qualification" name="qualification">
+                        <option value="" selected disabled>- SELECT -</option>
+                        <option value="1">10th</option>
+                        <option value="2">12th</option>
+                        <option value="3">Graduation</option>
+                        <option value="4">Post Graduation</option>
+                        <option value="5">Diploma</option>
+                        <option value="6">Others</option>
+                    </select>
+                </div>
+                <div>
+                    <h1>Select Your Interests</h1>
+                    <div class="checkbox-group" id="interests-container">
+                        <div class="checkbox-box"><input type="checkbox" name="interest" value="Coding">Coding</div>
+
+                        <div class="checkbox-box"><input type="checkbox" name="interest" value="Web_Dev">Web Devolopment</div>
+
+                        <div class="checkbox-box"><input type="checkbox" name="interest" value="Technical_Writing">Technical Writing</div>
+
+                        <div class="checkbox-box"><input type="checkbox" name="interest" value="UI">UI UX</div>
+
+                        <div class="checkbox-box"><input type="checkbox" name="interest" value="Mathematics">Mathematics</div>
+
+                        <div class="checkbox-box"><input type="checkbox" name="interest" value="Public_Speaking">Public Speaking</div>
+
+                        <div class="checkbox-box"><input type="checkbox" name="interest" value="Data_Science">Data Science</div>
+
+                        <div class="checkbox-box"><input type="checkbox" name="interest" value="Languages">Languages</div>
+
+                        <div class="checkbox-box"><input type="checkbox" name="interest" value="Other">Other</div>
+                    </div>
+                </div>
+                <input type="submit" class="btn" value="Submit" style="margin-top: 40px; margin-left: 60px;">
+            </form>    
+        </div>
+    </div>
+    <script>
+        // Get the interests container
+        const interestsContainer = document.getElementById('interests-container');
+    
+        // Add event listener to the container
+        interestsContainer.addEventListener('change', (event) => {
+            // Check if the clicked element is an input element of type checkbox
+            if (event.target.type === 'checkbox') {
+                // Toggle the 'selected' class on the parent div
+                event.target.parentElement.classList.toggle('selected', event.target.checked);
+            }
+        });
+    </script>
+    
+    
+
+</body>
+</html>
