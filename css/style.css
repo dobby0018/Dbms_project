@@ -362,4 +362,69 @@ form button.active {
 form button:hover {
 									background: linear-gradient(to right, #1f8f4f, #2fb968, #1f8f4f);
 }
-					
+
+.checkbox-group {
+	margin-top: 20px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+
+.checkbox-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 150px;
+	height: 50px;
+	border: 2px solid #38d39f;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.checkbox-box input[type="checkbox"] {
+	display: none;
+}
+
+.checkbox-box:hover {
+	background-color: #38d39f;
+	color: white;
+}
+
+.checkbox-box.selected{
+	background-color: #611313;
+	color : white;
+}
+
+.login-content-deatil{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.input-qua{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	font-size: 16px;
+
+}
+
+#qualification{
+	margin-left: 20px;
+	margin-right: 20px;
+	size: 20px;
+	width: 250px;
+	height: 40px;
+	border-radius: 9px;
+	outline: none;
+	font-size: 18px;
+	text-align: center;
+	border: 2px solid black;
+
+}
+
