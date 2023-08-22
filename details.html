@@ -59,18 +59,15 @@
         </div>
     </div>
     <script>
-        // Get the interests container
-        const interestsContainer = document.getElementById('interests-container');
+        const checkboxes = document.querySelectorAll('.checkbox-box');
     
-        // Add event listener to the container
-        interestsContainer.addEventListener('change', (event) => {
-            // Check if the clicked element is an input element of type checkbox
-            if (event.target.type === 'checkbox') {
-                // Toggle the 'selected' class on the parent div
-                event.target.parentElement.classList.toggle('selected', event.target.checked);
-            }
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                this.classList.toggle('selected');
+            });
         });
     </script>
+    
     
     
 
