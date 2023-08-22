@@ -392,7 +392,8 @@ form button:hover {
 }
 
 .checkbox-box.selected{
-	background-color: #611313;
+	border:2px solid white;
+	background-color: #38d39f;
 	color : white;
 }
 
