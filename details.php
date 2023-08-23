@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,13 @@
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body><?php
+echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> Your account is now created and you can login
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div> ';?>
     <img class="logo" src="img/logo.jpeg">
     <img class="wave" src="img/wave.png">
     <div class="container2">  
@@ -18,7 +25,7 @@
             <header>
                 <i class="bx bxs-check-shield"></i>
             </header>
-            <form action="#">
+            <form action="welcome.php" method ="post">
                 <h1>User Details</h1>
                 <div class="input-qua">
                     <label for="qualification" style="margin-right: 10px;"><h3>Select Qualification :</h3></label>

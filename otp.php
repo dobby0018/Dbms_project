@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +20,7 @@
 							<header>
 								<i class="bx bxs-check-shield"></i>
 							</header>
-							<form action="#">
+							<form action="">
 								<h1>Enter OTP</h1>
 								<div class="input-field">
 									<input type="number" />
