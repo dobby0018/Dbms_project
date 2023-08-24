@@ -3,7 +3,7 @@
 $login = false;
 $showError = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include '_dbconnect.php';
+    include 'php/_dbconnect.php';
     $user_name = $_POST["username"];
     $password = $_POST["password"]; 
     
@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $user_name;
-                header("location: welcome.php");
+                header("location: php/welcome.php");
             } 
             else{
                 $showError = "Invalid Credentials";
@@ -47,23 +47,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
 <?php
-    if($login){
+if ($login) {
     echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Success!</strong> You are logged in
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div> ';
-    }
-    if($showError){
+}
+if ($showError) {
     echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Error!</strong> '. $showError.'
+        <strong>Error!</strong> ' . $showError . '
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div> ';
-    }
-    ?>
+}
+?>
+<script>
+// Close alert when close button is clicked
+document.addEventListener("DOMContentLoaded", function() {
+    var closeButtonList = document.querySelectorAll(".alert button.close");
+    closeButtonList.forEach(function(button) {
+        button.addEventListener("click", function() {
+            var alert = button.closest(".alert");
+            alert.style.display = "none";
+        });
+    });
+});
+
+</script>
+
 
 	<img class="logo" src="img/logo.jpeg">
 	<img class="wave" src="img/wave.png">
@@ -72,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<img src="img/pic2.png">
 		</div>
 		<div class="login-content">
-			<form action="login.php" method="post">
+			<form action="php/login.php" method="post">
 				<h2 class="title">Welcome</h2>
            		<div class="input-div one">
            		   <div class="i">
@@ -93,8 +107,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             	   </div>
             	</div>
             	<div class="login-links">
-														<a href="forgot.php">Forgot Password?</a>
-														<a href="signup.php">Create Account?</a>
+														<a href="php/forgot.php">Forgot Password?</a>
+														<a href="php/signup.php">Create Account?</a>
             	</div>
             	<input type="submit" class="btn" value="Login">
             </form>

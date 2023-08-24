@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+	header("location:php/forgot.php");
+}
+
+?>
 
 
 <!DOCTYPE html>
@@ -20,17 +28,17 @@
 							<header>
 								<i class="bx bxs-check-shield"></i>
 							</header>
-							<form action="">
+							<form action="php/verify_2.php" method="post">
 								<h1>Enter OTP</h1>
 								<div class="input-field">
-									<input type="number" />
-									<input type="number" disabled />
-									<input type="number" disabled />
-									<input type="number" disabled />
-									<input type="number" disabled />
-									<input type="number" disabled />
+									<input type="number" name="k1"/>
+									<input type="number" disabled name="k2"/>
+									<input type="number" disabled name="k3"/>
+									<input type="number" disabled name="k4"/>
+									<input type="number" disabled name="k5"/>
+									<input type="number" disabled name="k6"/>
 								</div>
-								<a href="#">Resend OTP?</a>
+								<a href="php/send.php">Resend OTP?</a>
 								<input type="submit" class="btn" value="Verify">
 								</form>	
 						</div>

@@ -1,8 +1,14 @@
 <?php
 $showAlert = false;
 $showError = false;
+use PHPMailer\PHPMailer\PHPMailer;
+				use PHPMailer\PHPMailer\SMTP;
+				use PHPMailer\PHPMailer\Exception;
+				require 'phpmailer/src/Exception.php';
+				require 'phpmailer/src/PHPMailer.php';
+				require 'phpmailer/src/SMTP.php';
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include '_dbconnect.php';
+    include 'php/_dbconnect.php';
 	$firstname=$_POST["firstname"];
 	$lastname=$_POST["lastname"];
 	$email=$_POST["email"];
@@ -14,23 +20,69 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Check whether this username exists
     $existSql = "SELECT * FROM `user_data` WHERE user_name = '$user_name'";
+	$existSql2="SELECT * FROM `user_data` WHERE email = '$email'";
     $result = mysqli_query($conn, $existSql);
     $numExistRows = mysqli_num_rows($result);
+	$result = mysqli_query($conn, $existSql2);
+	$numExistRows2 = mysqli_num_rows($result);
     if($numExistRows > 0){
         // $exists = true;
         $showError = "Username Already Exists";
     }
+	elseif($numExistRows2 > 0)
+	{
+		$showError = "Email Already Exists";
+	}
     else{
         // $exists = false; 
         if(($password == $cpassword)){
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO `user_data` (`first_name`, `last_name`, `email`, `user_name`, `password`, `date_time`) VALUES ('$firstname', '$lastname','$email','$user_name', '$hash', current_timestamp())";
-            $result = mysqli_query($conn, $sql);
-            if ($result){
+            // $hash = password_hash($password, PASSWORD_DEFAULT);
+            // $sql = "INSERT INTO `user_data` (`first_name`, `last_name`, `email`, `user_name`, `password`, `date_time`) VALUES ('$firstname', '$lastname','$email','$user_name', '$hash', current_timestamp())";
+            // $result = mysqli_query($conn, $sql);
+            // if ($result){
                 $showAlert = true;
-				// header("Location:details.php");
-            }
-        }
+				// use PHPMailer\PHPMailer\PHPMailer;
+				// use PHPMailer\PHPMailer\SMTP;
+				// use PHPMailer\PHPMailer\Exception;
+				// require 'phpmailer/src/Exception.php';
+				// require 'phpmailer/src/PHPMailer.php';
+				// require 'phpmailer/src/SMTP.php';
+				$otp=rand(111111,999999);
+				session_start();
+				$_SESSION['otp']=$otp;
+				$_SESSION['firstname']=$firstname;
+				$_SESSION['lastname']=$lastname;
+				$_SESSION['email']=$email;
+				$_SESSION['username']=$user_name;
+				$_SESSION['password']=$password;
+				if(isset($_POST["email"])){
+					$mail= new PHPMailer(true);
+					$mail->isSMTP();
+					$mail->Host='smtp.gmail.com';
+					$mail->SMTPAuth=true;
+					$mail->Username='abhinavlotlikar48@gmail.com';
+					$mail->Password='kutrlmlhsafkocfr';
+					$mail->SMTPSecure='ssl';
+					$mail->Port       = 465; 
+
+
+					//Recipients
+					$mail->setFrom('abhinavlotlikar48@gmail.com','leaplearn');
+					$mail->addAddress($_POST['email']);     
+					
+
+					
+					$mail->isHTML(true);                                  
+					$mail->Subject = "Account verification!";
+					$mail->Body ="your otp: $otp";
+					
+
+					$mail->send();
+				
+				header("Location:php/otp.php");
+				
+            
+				}}
         else{
             $showError = "Passwords do not match";
         }
@@ -49,27 +101,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <body>
 
-    <?php
-    if($showAlert){
-    echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Success!</strong> Your account is now created and you can login
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div> ';
-	 
-	header("Location:details.php");
-    }
-    if($showError){
+<?php
+
+if ($showError) {
     echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Error!</strong> '. $showError.'
+        <strong>Error!</strong> ' . $showError . '
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div> ';
-    }
-	
-    ?>
+}
+?>
+<script>
+// Close alert when close button is clicked
+document.addEventListener("DOMContentLoaded", function() {
+    var closeButtonList = document.querySelectorAll(".alert button.close");
+    closeButtonList.forEach(function(button) {
+        button.addEventListener("click", function() {
+            var alert = button.closest(".alert");
+            alert.style.display = "none";
+        });
+    });
+});
+
+</script>
 	<img class="logo" src="img/logo.jpeg"> <!--Logo-->
  	<img class="wave" src="img/wave.png">  <!--Backgound-->
 	<div class="container">
@@ -77,7 +132,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<img src="img/pic1.png">  <!--Side image-->
 		</div>
 		<div class="login-content">
-				<form action="signup.php" method="post">
+				<form action="php/signup.php" method="post">
 				<h2 class="title">Registration</h2>
 
 				<div class="input-group" >
@@ -136,8 +191,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            		    	<input type="password" class="input" name="cpassword">
             	   </div>
             	</div>
-            	<a href="login.php" class="account">Already have an account?</a>
-            	<input type="submit" class="btn" value="Register">
+            	<a href="php/login.php" class="account">Already have an account?</a>
+            	<input type="submit" class="btn" value="send">
             </form>
    	</div>
    </div>

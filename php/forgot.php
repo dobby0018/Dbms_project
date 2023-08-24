@@ -4,7 +4,7 @@
 $login = false;
 $showError = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include '_dbconnect.php';
+    include 'php/_dbconnect.php';
     $user_name = $_POST["username"];
     $email = $_POST["email"]; 
     
@@ -20,7 +20,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         while($row=mysqli_fetch_assoc($result)){
             if ($email == $row['email']){ 
                 
-                header("location: otp.php");
+                session_start();
+                
+                $_SESSION['username']=$user_name;
+                $_SESSION['email']=$email;
+
+
+                header("location: php/send.php");
             } 
             else{
                 $showError = "Invalid email";
@@ -31,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
         $showError = "Invalid username";
     }
-
+    
    
 }
     
@@ -66,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<img src="img/verify.png">
 		</div>
 		<div class="login-content">
-			<form action="otp.php" method="post">
+			<form action="php/forgot.php" method="post">
 				<h2 class="title">Forgot Password</h2>
     <div class="input-div one">
     <div class="i">

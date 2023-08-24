@@ -15,6 +15,19 @@ echo ' <div class="alert alert-success alert-dismissible fade show" role="alert"
             <span aria-hidden="true">&times;</span>
         </button>
     </div> ';?>
+            <script>
+        // Close alert when close button is clicked
+        document.addEventListener("DOMContentLoaded", function() {
+            var closeButtonList = document.querySelectorAll(".alert button.close");
+            closeButtonList.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    var alert = button.closest(".alert");
+                    alert.style.display = "none";
+                });
+            });
+        });
+
+        </script>
     <img class="logo" src="img/logo.jpeg">
     <img class="wave" src="img/wave.png">
     <div class="container2">  
@@ -25,7 +38,7 @@ echo ' <div class="alert alert-success alert-dismissible fade show" role="alert"
             <header>
                 <i class="bx bxs-check-shield"></i>
             </header>
-            <form action="welcome.php" method ="post">
+            <form action="php/welcome.php" method ="post">
                 <h1>User Details</h1>
                 <div class="input-qua">
                     <label for="qualification" style="margin-right: 10px;"><h3>Select Qualification :</h3></label>
