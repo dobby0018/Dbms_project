@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['username']))
 {
-	header("location:php/forgot.php");
+	header("location:forgot.php");
 }
 
 ?>
@@ -12,23 +12,23 @@ if(!isset($_SESSION['username']))
 <html>
 <head>
 	<title>OTP verification</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<img class="logo" src="img/logo.jpeg" >
- <img class="wave" src="img/wave.png">
+	<img class="logo" src="../img/logo.jpeg" >
+ <img class="wave" src="../img/wave.png">
 	 <div class="container2">  
 						<div class="img"> 
-							<img src="img/verify.png">
+							<img src="../img/verify.png">
 						</div>
 						<div class="login-content-otp">
 							<header>
 								<i class="bx bxs-check-shield"></i>
 							</header>
-							<form action="php/verify_2.php" method="post">
+							<form action="verify_2.php" method="post">
 								<h1>Enter OTP</h1>
 								<div class="input-field">
 									<input type="number" name="k1"/>
@@ -38,7 +38,7 @@ if(!isset($_SESSION['username']))
 									<input type="number" disabled name="k5"/>
 									<input type="number" disabled name="k6"/>
 								</div>
-								<a href="php/send.php">Resend OTP?</a>
+								<a href="send.php">Resend OTP?</a>
 								<input type="submit" class="btn" value="Verify">
 								</form>	
 						</div>
@@ -93,6 +93,6 @@ if(!isset($_SESSION['username']))
 		
 		//focus the first input which index is 0 on window load
 		window.addEventListener("load", () => inputs[0].focus());</script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
 </body>
 </html>

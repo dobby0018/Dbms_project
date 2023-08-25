@@ -4,11 +4,11 @@ $showError = false;
 use PHPMailer\PHPMailer\PHPMailer;
 				use PHPMailer\PHPMailer\SMTP;
 				use PHPMailer\PHPMailer\Exception;
-				require 'phpmailer/src/Exception.php';
-				require 'phpmailer/src/PHPMailer.php';
-				require 'phpmailer/src/SMTP.php';
+				require '../phpmailer/src/Exception.php';
+				require '../phpmailer/src/PHPMailer.php';
+				require '../phpmailer/src/SMTP.php';
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include 'php/_dbconnect.php';
+    include '_dbconnect.php';
 	$firstname=$_POST["firstname"];
 	$lastname=$_POST["lastname"];
 	$email=$_POST["email"];
@@ -79,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 					$mail->send();
 				
-				header("Location:php/otp.php");
+				header("Location:otp.php");
 				
             
 				}}
@@ -93,7 +93,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html>
 <head>
 	<title>Registration Page</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -125,14 +125,14 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 </script>
-	<img class="logo" src="img/logo.jpeg"> <!--Logo-->
- 	<img class="wave" src="img/wave.png">  <!--Backgound-->
+	<img class="logo" src="../img/logo.jpeg"> <!--Logo-->
+ 	<img class="wave" src="../img/wave.png">  <!--Backgound-->
 	<div class="container">
 		<div class="img">
-			<img src="img/pic1.png">  <!--Side image-->
+			<img src="../img/pic1.png">  <!--Side image-->
 		</div>
 		<div class="login-content">
-				<form action="php/signup.php" method="post">
+				<form action="signup.php" method="post">
 				<h2 class="title">Registration</h2>
 
 				<div class="input-group" >
@@ -191,11 +191,11 @@ document.addEventListener("DOMContentLoaded", function() {
            		    	<input type="password" class="input" name="cpassword">
             	   </div>
             	</div>
-            	<a href="php/login.php" class="account">Already have an account?</a>
+            	<a href="login.php" class="account">Already have an account?</a>
             	<input type="submit" class="btn" value="send">
             </form>
    	</div>
    </div>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
 </body>
 </html>

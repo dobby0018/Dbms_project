@@ -4,7 +4,7 @@
 $login = false;
 $showError = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include 'php/_dbconnect.php';
+    include '_dbconnect.php';
     $user_name = $_POST["username"];
     $email = $_POST["email"]; 
     
@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_SESSION['email']=$email;
 
 
-                header("location: php/send.php");
+                header("location:send.php");
             } 
             else{
                 $showError = "Invalid email";
@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html>
 <head>
 	<title>Forgot Password</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,14 +65,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div> ';
     }
     ?>
-	<img class="logo" src="img/logo.jpeg">
-	<img class="wave" src="img/wave.png">
+	<img class="logo" src="../img/logo.jpeg">
+	<img class="wave" src="../img/wave.png">
 	<div class="container">
 		<div class="img">
-			<img src="img/verify.png">
+			<img src="../img/verify.png">
 		</div>
 		<div class="login-content">
-			<form action="php/forgot.php" method="post">
+			<form action="forgot.php" method="post">
 				<h2 class="title">Forgot Password</h2>
     <div class="input-div one">
     <div class="i">
@@ -97,6 +97,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    </form>
   </div>
  </div>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
 </body>
 </html>

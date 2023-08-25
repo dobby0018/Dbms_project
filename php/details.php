@@ -1,9 +1,16 @@
+<?php
+session_start();
+if(isset($_SESSION['username']))
+header("location: welcome.php");
+else
+header("location: login.php");
 
+?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>User Details</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,17 +35,17 @@ echo ' <div class="alert alert-success alert-dismissible fade show" role="alert"
         });
 
         </script>
-    <img class="logo" src="img/logo.jpeg">
-    <img class="wave" src="img/wave.png">
+    <img class="logo" src="../img/logo.jpeg">
+    <img class="wave" src="../img/wave.png">
     <div class="container2">  
         <div class="img"> 
-            <img src="img/course.png">
+            <img src="../img/course.png">
         </div>
         <div class="login-content-deatil">
             <header>
                 <i class="bx bxs-check-shield"></i>
             </header>
-            <form action="php/welcome.php" method ="post">
+            <form action="welcome.php" method ="post">
                 <h1>User Details</h1>
                 <div class="input-qua">
                     <label for="qualification" style="margin-right: 10px;"><h3>Select Qualification :</h3></label>

@@ -3,7 +3,7 @@
 $login = false;
 $showError = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include 'php/_dbconnect.php';
+    include '_dbconnect.php';
     $user_name = $_POST["username"];
     $password = $_POST["password"]; 
     
@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $user_name;
-                header("location: php/welcome.php");
+                header("location: welcome.php");
             } 
             else{
                 $showError = "Invalid Credentials";
@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html>
 <head>
 	<title>Login Page</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -79,14 +79,14 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 
-	<img class="logo" src="img/logo.jpeg">
-	<img class="wave" src="img/wave.png">
+	<img class="logo" src="../img/logo.jpeg">
+	<img class="wave" src="../img/wave.png">
 	<div class="container">
 		<div class="img">
-			<img src="img/pic2.png">
+			<img src="../img/pic2.png">
 		</div>
 		<div class="login-content">
-			<form action="php/login.php" method="post">
+			<form action="login.php" method="post">
 				<h2 class="title">Welcome</h2>
            		<div class="input-div one">
            		   <div class="i">
@@ -107,13 +107,13 @@ document.addEventListener("DOMContentLoaded", function() {
             	   </div>
             	</div>
             	<div class="login-links">
-														<a href="php/forgot.php">Forgot Password?</a>
-														<a href="php/signup.php">Create Account?</a>
+														<a href="forgot.php">Forgot Password?</a>
+														<a href="signup.php">Create Account?</a>
             	</div>
             	<input type="submit" class="btn" value="Login">
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
 </body>
 </html>

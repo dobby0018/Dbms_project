@@ -4,9 +4,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
+require '../phpmailer/src/Exception.php';
+require '../phpmailer/src/PHPMailer.php';
+require '../phpmailer/src/SMTP.php';
 
 session_start();
 
@@ -36,10 +36,10 @@ if(isset($_SESSION["email"])){
 
     $mail->send();
     if(isset($_SESSION['firstname']))
-    {header("location:php/otp.php");}
+    {header("location:otp.php");}
     else
     {
-    header("location:php/forgot_php/otp.php");}
+    header("location:forgot_otp.php");}
 }
 
 

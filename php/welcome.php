@@ -13,7 +13,7 @@ if(isset($_SESSION['username']))
 
 </script>";
 
-    header("location:php/logout.php");
+    header("location:logout.php");
 }
 
 
@@ -27,7 +27,7 @@ if(isset($_SESSION['username']))
 </head>
 <body>
 
-    <form action="php/logout.php" method="post">
+    <form action="logout.php" method="post">
     <input type="submit" class="btn" value="logout">
     </form>
 </body>
