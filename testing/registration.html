@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Registration Page</title>
+  <!--<link rel="stylesheet" type="text/css" href="css/reg.css">-->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ </head>
+ <style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body{
+		font-family: 'Poppins', sans-serif;
+		overflow: hidden;
+	}
+
+	.logo{
+		top: 10px;
+		right: 20px;
+		position: fixed;
+		width: 120px;
+		height: 120px;
+		padding: 10px 10px;
+		z-index: -1;
+	}
+
+	.back{
+		position:fixed;
+		bottom: 0;
+		left: 0;
+		height: 100%;
+		z-index: -1;
+	}
+
+	.container {
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 7rem;
+	padding: 0 2rem;
+	}
+
+	.sideimg{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-left: -50px;
+	}
+
+	.test{
+	position: absolute;
+	width: 300px;
+	margin-left: 1190px;
+	margin-top: 300px;
+	height: 300px;
+	padding: 80px 40px;
+	box-sizing: border-box;
+	display:	none;
+	}
+
+	.test:active{
+	display: block;
+	}
+
+	.login-content {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: center;
+	}
+
+	.img img{
+	width: 400px;
+	}
+
+	form {
+	width: 360px;
+	}
+
+	.login-content img {
+	height: 100px;
+	}
+
+	.login-content h2{
+	margin: 15px 0;
+	color: #333;
+	text-transform: uppercase;
+	font-size: 2.9rem;
+	}
+
+	.login-content .input-div {
+	position: relative;
+	display: grid;
+	grid-template-columns: 7% 93%;
+	margin: 25px 0;
+	padding: 5px 0;
+	border-bottom: 2px solid #d9d9d9;
+	}
+
+	.login-content .input-div.one {
+	margin-top: 0;
+	}
+
+	.input-group {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1px;
+	}
+
+	.input-group .input-div {
+	width: calc(50% - 1px);
+	margin-right: 10px;
+	}
+
+	.input-div > div {
+	position: relative;
+	height: 45px;
+	}
+
+	.input-div > div > h5 {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #999;
+	font-size: 18px;
+	transition: .3s;
+	}
+
+	.input-div:before,
+	.input-div:after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	width: 0%;
+	height: 2px;
+	background-color: #38d39f;
+	transition: .4s;
+	}
+
+	.input-div:before {
+		right: 50%;
+	}
+
+	.input-div:after {
+		left: 50%;
+	}
+
+	.input-div.focus:before,
+	.input-div.focus:after {
+		width: 50%;
+	}
+
+	.input-div.focus > div > h5 {
+		top: -5px;
+		font-size: 15px;
+	}
+
+	.input-div.focus > .i > i {
+		color: #38d39f;
+	}
+
+	.input-div > div > input {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		border: none;
+		outline: none;
+		background: none;
+		padding: 0.5rem 0.7rem;
+		font-size: 1.2rem;
+		color: #555;
+		font-family: 'poppins', sans-serif;
+	}
+
+	.input-div.pass {
+		margin-bottom: 4px;
+	}
+
+	.i{
+		color: #d9d9d9;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.i i {
+		transition: .3s;
+	}
+
+	.i i{
+		transition: .3s;
+	}
+
+	a {
+	display: block;
+	text-align: right;
+	text-decoration: none;
+	color: #999;
+	font-size: 0.9rem;
+	transition: .3s;
+	}
+
+	a:hover {
+	color: #38d39f;
+	}
+
+	.btn {
+	display: block;
+	width: 100%;
+	height: 50px;
+	background-size: 200%;
+	font-size: 1.2rem;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+	background-color: #38d39f;
+		color: #ffffff;
+		border-radius: 25px;
+		cursor: pointer;
+	}
+
+
+	.btn:disabled{
+		background-color: #fff;
+		color: #b0a5a5;
+		border-radius: 25px;
+		border: 2px solid #b7c0b1;
+		cursor: not-allowed;
+	}
+
+	.btn:active{
+		background-color: #38d39f;
+		color: #ffffff;
+		border-radius: 25px;
+		cursor: pointer;
+
+
+	}
+
+	.invalid{
+		color: red;
+	}
+
+	.invalid:before{
+		content: '✖ ';
+		position: relative;
+	}
+
+	.valid{
+		color: rgb(255, 255, 255);
+	}
+
+
+
+ </style>
+
+ <body>
+	<img class="logo" src="Leap Learn logo.png">  <!--Logo -->
+	<img class="back" src="wave.png">
+
+	<div class="container">
+		<div class="sideimg">
+			<img src="pic1.png">  <!--Side image-->
+		</div>
+		<!--Password conditions-->
+		<div id="password-test" class="test">
+			<p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+
+			<p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+
+			<p id="number" class="invalid">A <b>number</b></p>
+
+			<p id="length" class="invalid">Minimum <b>8 characters</b></p>
+
+			<p id="match" class="invalid" >Passwords <b>match</b></p>
+		</div>
+
+		<div class="login-content">
+			<form>
+				<h2>Registration</h2>
+				<div class="input-group">
+					<div class="input-div">
+						<div class="i">
+							<i class="fas fa-user"></i>
+						</div>
+						<div>
+							<h5>First Name</h5>
+							<input type="text" class="input">
+						</div>
+					</div>
+
+					<div class="input-div">
+						<div class="i">
+							<i class="fas fa-user"></i>
+						</div>
+						<div>
+							<h5>Last Name</h5>
+							<input type="text" class="input">
+						</div>
+					</div>
+				</div>
+
+				<div class="input-div one">
+					<div class="i">
+						<i class="fas fa-envelope"></i>
+					</div>
+					<div class="div">
+						<h5>Email</h5>
+						<input type="email" class="input">
+					</div>
+				</div>
+
+				<div class="input-div one">
+					<div class="i">
+						<i class="fas fa-lock"></i>
+					</div>
+					<div class="div">
+						<h5>Password</h5>
+						<input type="password" class="input" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+					</div>
+				</div>
+
+				<div class="input-div one">
+					<div class="i">
+						<i class="fas fa-lock"></i>
+					</div>
+					<div class="div">
+						<h5>Confirm Password</h5>
+						<input type="password" class="input" id="confirmPsw" name="confirmPsw">
+					</div>
+				</div>
+				<a href="login.html">Already have an account?</a>
+				<input type="submit" class="btn" value="Register" disabled>
+			</form>
+		</div>
+	</div>
+
+
+	<script>
+	// Add 'focus' class to the parent div when input gains focus
+	function addcl() {
+		let parent = this.parentNode.parentNode;
+		parent.classList.add("focus");
+	}
+
+	// Remove 'focus' class from parent div when input loses focus and has no value
+	function remcl() {
+		let parent = this.parentNode.parentNode;
+		if (this.value === "") {
+				parent.classList.remove("focus");
+		}
+	}
+
+	// Attach 'focus' and 'blur' event listeners to input elements
+	const inputs = document.querySelectorAll(".input");
+	inputs.forEach(input => {
+		input.addEventListener("focus", addcl);
+		input.addEventListener("blur", remcl);
+	});
+
+
+	// Password conditions
+	var myInput = document.getElementById("psw");
+	var confirmPsw = document.getElementById("confirmPsw");
+	var letter = document.getElementById("letter");
+	var capital = document.getElementById("capital");
+	var number = document.getElementById("number");
+	var length = document.getElementById("length");
+	var match = document.getElementById("match");
+
+	// When the user clicks on the password field, show the message box
+	myInput.addEventListener("focus", function() {
+		document.getElementById("password-test").style.display = "block";
+	});
+
+	// When the user clicks outside of the password field, hide the message box
+	myInput.addEventListener("blur", function() {
+		document.getElementById("password-test").style.display = "none";
+	});
+
+				// When the "Confirm Password" field gains focus, show the password validation messages
+confirmPsw.addEventListener("focus", function() {
+    document.getElementById("password-test").style.display = "block";
+});
+
+// When the "Confirm Password" field loses focus, hide the password validation messages
+confirmPsw.addEventListener("blur", function() {
+    document.getElementById("password-test").style.display = "none";
+});
+
+
+	// When the user starts to type something inside the password field
+	myInput.addEventListener("input" , function() {
+		// Validate lowercase letters
+		var lowerCaseLetters = /[a-z]/g;
+		if(myInput.value.match(lowerCaseLetters)) {  
+			letter.classList.remove("invalid");
+			letter.classList.add("valid");
+		} else {
+			letter.classList.remove("valid");
+			letter.classList.add("invalid");
+		}
+
+		// Validate capital letters
+		var upperCaseLetters = /[A-Z]/g;
+		if(myInput.value.match(upperCaseLetters)) {  
+			capital.classList.remove("invalid");
+			capital.classList.add("valid");
+		} else {
+			capital.classList.remove("valid");
+			capital.classList.add("invalid");
+		}
+
+		// Validate numbers
+		var numbers = /[0-9]/g;
+		if(myInput.value.match(numbers)) {  
+			number.classList.remove("invalid");
+			number.classList.add("valid");
+		} else {
+			number.classList.remove("valid");
+			number.classList.add("invalid");
+		}
+
+		// Validate length
+		if(myInput.value.length >= 8) {
+			length.classList.remove("invalid");
+			length.classList.add("valid");
+		} else {
+			length.classList.remove("valid");
+			length.classList.add("invalid");
+		}
+
+		// Enable submit button if all conditions are met
+		var submit = document.querySelector(".btn");
+		if(letter.classList.contains("valid") && capital.classList.contains("valid") && number.classList.contains("valid") && length.classList.contains("valid") && match.classList.contains("valid")) {
+			submit.disabled = false;
+		} else {
+			submit.disabled = true;
+		}
+	});
+
+	// When the user starts to type something inside the "Confirm Password" field
+	confirmPsw.addEventListener("input", function() {
+		// Validate password match
+		var confirmPswInput = document.getElementById("confirmPsw");
+		if (myInput.value === confirmPswInput.value && confirmPswInput.value !== "") {
+			match.classList.remove("invalid");
+			match.classList.add("valid");
+		} else {
+			match.classList.remove("valid");
+			match.classList.add("invalid");
+		}
+
+		// Enable submit button if all conditions are met
+		var submit = document.querySelector(".btn");
+		if(letter.classList.contains("valid") && capital.classList.contains("valid") && number.classList.contains("valid") && length.classList.contains("valid") && match.classList.contains("valid")) {
+			submit.disabled = false;
+		} else {
+			submit.disabled = true;
+		}
+	});
+
+	</script>
+ </body>
+
+</html>
