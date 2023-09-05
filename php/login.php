@@ -88,6 +88,13 @@ document.addEventListener("DOMContentLoaded", function() {
 		<div class="login-content">
 			<form action="login.php" method="post">
 				<h2 class="title">Welcome</h2>
+                <div class="option" >
+				<input type="radio" value="Student" >
+				<label for="Student" style="margin-right: 50px; 	font-size: 1.3rem;">Student</label>
+				<input type="radio" value="Professor">
+				<label for="Professor" style="margin-right: 30px; 	font-size: 1.3rem;">Professor</label>
+			</div>
+
            		<div class="input-div one">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>
