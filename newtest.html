@@ -1,3 +1,8 @@
+<!--put our logo to open the side bar-done
+   2)in one row put 4 courses to be seen -done
+   , increase its size and also put arrow keys to see more of them -pending
+  add a footer -done
+ 3 sections - pending-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,9 +30,11 @@
 
      courseCards.forEach(card => {
        if (isSidebarCollapsed) {
-         card.style.margin = '10px 10px 10px 10px';
+         card.style.margin = '20px 10px 10px 20px';
+         card.style.width = 'calc(30% - 10px)';
        } else {
-         card.style.margin = '10px';
+         card.style.margin = '20px 10px 10px 20px';
+          card.style.width = 'calc(30% - 2px)';
        }
      });
 
@@ -46,6 +53,17 @@
 
       
   }
+
+  // JavaScript to show the footer when the user scrolls to the bottom of the page
+  window.addEventListener('scroll', function() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      // Show the footer when scrolled to the bottom
+      document.querySelector('footer').style.display = 'flex';
+    } else {
+      // Hide the footer when not scrolled to the bottom
+      document.querySelector('footer').style.display = 'none';
+    }
+  });
 	</script>
  <style>
   @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
@@ -97,7 +115,7 @@ body{
   width: 70px;
   height: 100%;
   background: #38d39f;
-  padding: 15px 17px;
+  padding: 11px 9px;
   border-top-left-radius: 20px;
   cursor: pointer;
 }
@@ -130,8 +148,8 @@ body{
 }
 
 .logo{
-  width: 50px;
-  height: 50px; 
+  width: 53px;
+  height: 40px; 
   overflow: hidden;
 }
 
@@ -218,11 +236,12 @@ body{
   display: block;
 }
 
-.wrapper .main_container{
+.wrapper .main_container {
   width: calc(100% - 200px);
   margin-top: 70px;
   margin-left: 200px;
   padding: 15px;
+  padding-bottom: 70px; /* Adjusted padding to accommodate the footer */
   transition: all 0.3s ease;
 }
 
@@ -327,15 +346,16 @@ body{
       border: 1px solid #ccc;
       padding: 20px;
       margin: 10px;
-      width: calc(20% - 10px);
+      height: 250px;
+      width: calc(30% - 10px);
       box-sizing: border-box;
       transition: all 0.3s ease;
       flex: 1 1 calc(20% - 20px);
-      max-width: calc(20% - 20px);
+      max-width: calc(30% - 20px);
     }
 
     .wrapper.collapse .course-card {
-      width: calc(20%-10px);
+      width: calc(30% - 10px);
     }
 
     #course-container {
@@ -343,6 +363,43 @@ body{
       flex-wrap: wrap;
       margin-top: 30px;
     }
+
+    footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #38d39f;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80px; /* Set the fixed height of the footer here */
+  text-align: left;
+}
+
+footer .box {
+  flex: 1;
+}
+
+footer .box h3 {
+  margin-bottom: 10px;
+}
+
+footer .box a {
+  color: #000000;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+}
+
+footer .box a:hover {
+  text-decoration: underline;
+}
+
+  /* Adjust main container to push content above the footer */
+  .main_container {
+  margin-bottom: 80px; /* Adjust margin to accommodate the footer height */
+}
  </style>
 </head>
 <body>
@@ -350,12 +407,11 @@ body{
 <div class="wrapper">
   <div class="top_navbar">
     <div class="indiv">
-       <div class="one"></div>
-       <div class="two"></div>
-       <div class="three"></div>
+      <img src="img/Leap Learn logo.png" class="logo">
+
     </div>
     <div class="top_menu">
-      <div ><img src="img/Leap Learn logo.png" class="logo"></div>
+      
       <form class="search">
        <input type="text" placeholder="Search.." >
        <i class="fas fa-search"></i>
@@ -429,9 +485,21 @@ body{
   <span class="dot"></span>
 </div>
 
-<div id="course-container">
- 
-</div>
+
+<div id="course-container"></div>
+
+<footer>
+  <div class="box">
+    <h3>Quick Links</h3>
+    <a href="#">About Us</a>
+    <br>
+    <a href="#">Contact Us</a>
+  </div>
+  <div class="box">
+    <h3>Follow Us</h3>
+    <a href="#">LinkedIn</a>
+  </div>
+</footer>
 	
 
 <script>
@@ -463,13 +531,13 @@ body{
     title: "Course 1",
     description: "Description for Course 1",
     level: "Intermediate",
-    imageUrl: "img/logo.png"
+    imageUrl: "c1.png"
   },
   {
     title: "Course 2",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "c2.png"
   },
   {
     title: "Course 3",
