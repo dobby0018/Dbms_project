@@ -1,14 +1,9 @@
-<!--put our logo to open the side bar-done
-   2)in one row put 4 courses to be seen -done
-   , increase its size and also put arrow keys to see more of them -pending
-  add a footer -done
- 3 sections - pending-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>newtest</title>
-	<link rel="stylesheet" href="styles.css">
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
@@ -98,10 +93,10 @@ body{
     transform: translate(0%, 0%);
 }
 
-
 .wrapper{
   margin: 10px;
 }
+
 .wrapper .top_navbar{
   width: calc(100% - 20px);
   height: 60px;
@@ -157,8 +152,8 @@ body{
 
 
 .logo{
-  width: 53px;
-  height: 40px; 
+  width: 60px;
+  height: 50px; 
   overflow: hidden;
 }
 
@@ -221,7 +216,7 @@ body{
   left: 0;
   width: 3px;
   height: 100%;
-  background: #999;
+  background: #2a2828;
   display: none;
 }
 
@@ -250,7 +245,7 @@ body{
   margin-top: 70px;
   margin-left: 200px;
   padding: 15px;
-  padding-bottom: 70px; /* Adjusted padding to accommodate the footer */
+  padding-bottom: 70px;
   transition: all 0.3s ease;
 }
 
@@ -260,8 +255,9 @@ body{
 	margin: auto;
 }
 
+
 .numbertext{
-	  color: #f2f2f2;
+	color: #f2f2f2;
   font-size: 12px;
   padding: 8px 12px;
   position: absolute;
@@ -269,7 +265,7 @@ body{
 }
 
 .dot{
-	  height: 15px;
+	height: 15px;
   width: 15px;
   margin: 0 2px;
   background-color: #bbb;
@@ -279,17 +275,17 @@ body{
 }
 
 .active{
-	  background-color: #250909;
+	background-color: #250909;
 }
 
 .fade{
-	  animation-name: fade;
+	animation-name: fade;
   animation-duration: 1.5s;
 }
 
 
 @keyframes fade{
-	  from {opacity: .4} 
+	from {opacity: .4} 
   to {opacity: 1}
 }
 
@@ -310,8 +306,7 @@ body{
 }
 
 .wrapper.collapse .main_container{
-  margin-left: 70px;
-  
+  margin-left: 200px; 
 }
 
 .search {
@@ -342,46 +337,50 @@ body{
   transition: all 0.3s ease;
 }
 
-/* Adjusted styles for the icons in the top menu */
 .wrapper .top_navbar .top_menu ul li a i {
-  font-size: 18px; /* Adjust the font size */
-  margin-right: 0; /* Remove the margin to ensure proper alignment */
+  font-size: 18px;
+  margin-right: 0; 
 }
 
 
 .course-card {
-      border: 1px solid #ccc;
-      padding: 20px;
-      margin: 10px;
-      height: 250px;
-      width: calc(30% - 10px);
-      box-sizing: border-box;
-      transition: all 0.3s ease;
-      flex: 1 1 calc(20% - 20px);
-      max-width: calc(30% - 20px);
-    }
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px;
+  height: 320px;
+  width: calc(25% - 20px); /* Adjusted width to reduce the width */
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  flex: 1 1 calc(20% - 20px);
+  max-width: calc(25% - 30px); /* Adjusted max-width */
+}
 
-    .wrapper.collapse .course-card {
-      width: calc(30% - 10px);
-    }
+.course-card p{
+  margin-top: 10px;
+}
+.wrapper.collapse .course-card {
+  width: calc(25% - 10px);
+}
 
     #course-container {
       display: flex;
       flex-wrap: wrap;
       margin-top: 30px;
+      margin-left: 10px;
+      
     }
 
-    footer {
-  display: flex;
-  justify-content: space-around;
-  padding: 20px;
-  background-color: #38d39f;
-  color: #fff;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 80px; /* Set the fixed height of the footer here */
-  text-align: left;
+  footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #38d39f;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 80px; 
+    text-align: left;
 }
 
 footer .box {
@@ -407,6 +406,57 @@ footer .box a:hover {
   .main_container {
   margin-bottom: 80px; /* Adjust margin to accommodate the footer height */
 }
+
+/* Add this CSS to your existing styles or modify as needed */
+
+.Trending , .UserPreference , .FreeCourses {
+  margin-top: 40px;
+}
+
+.Trending h2, .UserPreference h2 , .FreeCourses h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.Trending .course-card, .UserPreference .course-card , .FreeCourses .course-card {
+  display: inline-block; /* Display cards inline */
+  margin: 10px;
+  width: calc(25% - 20px); /* Adjust the width to fit four cards in a row */
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.wrapper.collapse .course-card {
+  width: calc(25% - 10px);
+}
+
+.Trending .course-card img, .UserPreference .course-card img , .FreeCourses .course-card img{
+  max-width: 100%;
+}
+
+.Trending .course-card h3, .UserPreference .course-card h3 , .FreeCourses .course-card h3 {
+  font-size: 18px;
+}
+
+.Trending .course-card p, .UserPreference .course-card p , .FreeCourses .course-card p {
+  font-size: 14px;
+}
+
+.Trending .course-card a, .UserPreference .course-card a , .FreeCourses .course-card a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #38d39f;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.Trending .course-card a:hover, .UserPreference .course-card a:hover , .FreeCourses .course-card a:hover {
+  background-color: #26a07b;
+}
+
  </style>
 </head>
 <body>
@@ -492,8 +542,21 @@ footer .box a:hover {
   <span class="dot"></span>
 </div>
 
+<div class="Trending">
+  <h2>Trending Courses</h2>
+  <div id="trending-course-container" class="course-container"></div>
+</div>
 
-<div id="course-container"></div>
+<div class="UserPreference">
+  <h2>For You</h2>
+  <div id="user-preference-course-container" class="course-container"></div>
+</div>
+
+<div class="FreeCourses">
+  <h2>Free Courses</h2>
+  <div id="free-course-container" class="course-container"></div>
+</div>
+
 
 <footer>
   <div class="box">
@@ -532,73 +595,49 @@ footer .box a:hover {
 	}
 
 
-  <!--course-card-->
+  //course-card
   const courses = [
   {
     title: "Course 1",
     description: "Description for Course 1",
     level: "Intermediate",
-    imageUrl: "c1.png"
+    imageUrl: "c1.png",
+    popular: 'true'
   },
   {
     title: "Course 2",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "c2.png"
+    imageUrl: "c2.png",
+    popular: 'true'
   },
   {
     title: "Course 3",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "c1.png",
+    popular: 'true'
   },
   {
     title: "Course 4",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "c1.png",
+    popular: 'true'
   },
   {
     title: "Course 5",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "c1.png",
+    popular: 'false'
   },
   {
     title: "Course 1",
     description: "Description for Course 1",
     level: "Intermediate",
-    imageUrl: "img/logo.png"
-  },
-  {
-    title: "Course 2",
-    description: "Description for Course 2",
-    level: "Beginner",
-    imageUrl: "img/logo.png"
-  },
-  {
-    title: "Course 3",
-    description: "Description for Course 2",
-    level: "Beginner",
-    imageUrl: "img/logo.png"
-  },
-  {
-    title: "Course 4",
-    description: "Description for Course 2",
-    level: "Beginner",
-    imageUrl: "img/logo.png"
-  },
-  {
-    title: "Course 5",
-    description: "Description for Course 2",
-    level: "Beginner",
-    imageUrl: "img/logo.png"
-  },
-  {
-    title: "Course 1",
-    description: "Description for Course 1",
-    level: "Intermediate",
-    imageUrl: "img/logo.png"
+    imageUrl: "c1.png",
+    popular: 'false'
   },
   {
     title: "Course 2",
@@ -640,19 +679,58 @@ footer .box a:hover {
     title: "Course 3",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "img/logo.png",
+    price:"1000"
   },
   {
     title: "Course 4",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "img/logo.png",
+    price:"1000"
   },
   {
     title: "Course 5",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "img/logo.png",
+    price:"1000"
+  },
+  {
+    title: "Course 1",
+    description: "Description for Course 1",
+    level: "Intermediate",
+    imageUrl: "img/logo.png",
+    price:"1000"
+  },
+  {
+    title: "Course 2",
+    description: "Description for Course 2",
+    level: "Beginner",
+    imageUrl: "img/logo.png",
+    price:"free"
+  },
+  {
+    title: "Course 3",
+    description: "Description for Course 2",
+    level: "Beginner",
+    imageUrl: "img/logo.png",
+    price:"free"
+  },
+  {
+    title: "Course 4",
+    description: "Description for Course 2",
+    level: "Beginner",
+    imageUrl: "img/logo.png",
+    price:"free"
+    
+  },
+  {
+    title: "Course 5",
+    description: "Description for Course 2",
+    level: "Beginner",
+    imageUrl: "img/logo.png",
+    price:"free"
   },
   ];
 
@@ -664,11 +742,14 @@ footer .box a:hover {
     <h3>${course.title}</h3>
     <p>${course.description}</p>
     <p>Level: ${course.level}</p>
+    <p>Price: ${course.price}</p>
     <a href="#">View Course</a>
   `;
   return card;
 } 
 
+
+/*
 function displayCourses() {
   const courseContainer = document.getElementById('course-container');
   courses.forEach(course => {
@@ -676,8 +757,45 @@ function displayCourses() {
     courseContainer.appendChild(card);
   });
 }
+*/
 
-displayCourses();
+
+// Display trending courses
+const trendingCourse = {
+  popular: 'true'
+};
+displayCourses(trendingCourse, 'trending-course-container');
+
+// Display user preference courses
+const userPreference = {
+  level: 'Beginner'
+};
+displayCourses(userPreference, 'user-preference-course-container');
+
+const FreeCourses = {
+  price: 'free'
+};
+
+displayCourses(FreeCourses, 'free-course-container');
+
+function displayCourses(courseFilter, containerId) {
+  const courseContainer = document.getElementById(containerId);
+  courseContainer.innerHTML = '';
+
+  const filteredCourses = courses.filter(course => {
+    for (const [key, value] of Object.entries(courseFilter)) {
+      if (course[key] !== value) return false;
+    }
+    return true;
+  });
+
+  filteredCourses.forEach(course => {
+    const card = createCourseCard(course);
+    courseContainer.appendChild(card);
+  });
+}
+
+
 
 </script>
 </body>
