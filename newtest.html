@@ -381,6 +381,8 @@ body{
     width: 100%;
     height: 80px; 
     text-align: left;
+    margin-left: 200px;
+    margin-bottom: 10px;
 }
 
 footer .box {
@@ -457,6 +459,21 @@ footer .box a:hover {
   background-color: #26a07b;
 }
 
+.course-card.hidden {
+  display: none;
+}
+
+.see-more-button{
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #38d39f;
+  color: #fff;
+  text-decoration: none;
+  border: 2px solid #38d39f;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
  </style>
 </head>
 <body>
@@ -544,17 +561,63 @@ footer .box a:hover {
 
 <div class="Trending">
   <h2>Trending Courses</h2>
-  <div id="trending-course-container" class="course-container"></div>
+  <div id="trending-course-container" class="course-container">
+    <!-- Display 4 courses initially -->
+    <div class="course-card">
+      <!-- Course card content for the first course -->
+    </div>
+    <div class="course-card">
+      <!-- Course card content for the second course -->
+    </div>
+    <div class="course-card">
+      <!-- Course card content for the third course -->
+    </div>
+    <div class="course-card">
+      <!-- Course card content for the fourth course -->
+    </div>
+  </div>
+  <button class="see-more-button" onclick="showMore('trending-course-container')">Show More</button>
 </div>
 
 <div class="UserPreference">
-  <h2>For You</h2>
-  <div id="user-preference-course-container" class="course-container"></div>
-</div>
+  <h2>User Preference Courses</h2>
+  <div id="user-preference-course-container" class="course-container">
+    <!-- Display 4 courses initially -->
+    <div class="course-card">
+      <!-- Course card content for the first course -->
+    </div>
+    <div class="course-card">
+      <!-- Course card content for the second course -->
+    </div>
+    <div class="course-card">
+      <!-- Course card content for the third course -->
+    </div>
+    <div class="course-card">
+      <!-- Course card content for the fourth course -->
+    </div>
+  </div>
+</div>  
 
 <div class="FreeCourses">
   <h2>Free Courses</h2>
-  <div id="free-course-container" class="course-container"></div>
+  <div id="free-course-container" class="course-container">
+    <!-- Display 4 courses initially -->
+    <div class="course-card">
+      <!-- Course card content for the first course -->
+    </div>
+    <div class="course-card">
+      <!-- Course card content for the second course -->
+    </div>
+    <div class="course-card">
+      <!-- Course card content for the third course -->
+    </div>
+    <div class="course-card">
+      <!-- Course card content for the fourth course -->
+    </div>
+  </div>
+</div>
+
+
 </div>
 
 
@@ -643,37 +706,43 @@ footer .box a:hover {
     title: "Course 2",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "img/logo.png",
+    price:"free"
   },
   {
     title: "Course 3",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "img/logo.png",
+    price:"free"
   },
   {
     title: "Course 4",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "img/logo.png",
+    price:"free"
   },
   {
     title: "Course 5",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "img/logo.png",
+    price:"free"
   },
   {
     title: "Course 1",
     description: "Description for Course 1",
     level: "Intermediate",
-    imageUrl: "img/logo.png"
+    imageUrl: "img/logo.png",
+    price:"free"
   },
   {
     title: "Course 2",
     description: "Description for Course 2",
     level: "Beginner",
-    imageUrl: "img/logo.png"
+    imageUrl: "img/logo.png",
+    price:"free"
   },
   {
     title: "Course 3",
@@ -793,7 +862,62 @@ function displayCourses(courseFilter, containerId) {
     const card = createCourseCard(course);
     courseContainer.appendChild(card);
   });
+
+
 }
+
+function showMore(containerId) {
+  const courseContainer = document.getElementById(containerId);
+  const courseCards = courseContainer.querySelectorAll('.course-card');
+
+  // Initially, show 4 courses. Show additional 4 when "Show More" is clicked.
+  const numToShow = 4;
+  const numCurrentlyShown = document.querySelectorAll(`#${containerId} .course-card:not(.hidden)`).length;
+  const numToShowNow = numCurrentlyShown + numToShow;
+
+  for (let i = numCurrentlyShown; i < numToShowNow && i < courseCards.length; i++) {
+    const card = courseCards[i];
+    card.classList.remove('hidden');
+  }
+
+  // Hide the "Show More" button if all courses are shown
+  const moreCoursesHidden = document.querySelectorAll(`#${containerId} .course-card.hidden`).length > 0;
+  const showMoreButton = document.querySelector(`#${containerId} .see-more-button`);
+
+  if (moreCoursesHidden) {
+    showMoreButton.style.display = 'block';
+  } else {
+    showMoreButton.style.display = 'none';
+  }
+}
+
+// Initially hide all but the first 4 courses
+function initializeCourseVisibility() {
+  const courseContainers = document.querySelectorAll('.course-container');
+
+  courseContainers.forEach(courseContainer => {
+    const courseCards = courseContainer.querySelectorAll('.course-card');
+
+    for (let i = 4; i < courseCards.length; i++) {
+      const card = courseCards[i];
+      card.classList.add('hidden');
+    }
+
+    // Show the "Show More" button only if there are more than 4 courses initially
+    if (courseCards.length > 4) {
+      const showMoreButton = document.createElement('button');
+      showMoreButton.classList.add('see-more-button');
+      showMoreButton.textContent = 'Show More';
+      showMoreButton.onclick = () => showMore(courseContainer.id);
+
+      courseContainer.parentNode.insertBefore(showMoreButton, courseContainer.nextSibling);
+    }
+  });
+}
+
+// Call the initialization function
+initializeCourseVisibility();
+
 
 
 
