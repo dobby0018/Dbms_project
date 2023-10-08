@@ -357,6 +357,7 @@ body{
 
 .course-card p{
   margin-top: 10px;
+
 }
 .wrapper.collapse .course-card {
   width: calc(25% - 10px);
@@ -442,6 +443,11 @@ footer .box a:hover {
 
 .Trending .course-card p, .UserPreference .course-card p , .FreeCourses .course-card p {
   font-size: 14px;
+  max-height: 100px; /* Adjusted max-height for the description */
+  overflow: hidden; /* Hide overflowing content */
+  text-overflow: ellipsis; /* Display ellipsis for overflowed text */
+  white-space: nowrap; /* Prevent wrapping of text */
+
 }
 
 .Trending .course-card a, .UserPreference .course-card a , .FreeCourses .course-card a {
@@ -662,7 +668,7 @@ footer .box a:hover {
   const courses = [
   {
     title: "Course 1",
-    description: "Description for Course 1",
+    description: "Description for Course 1 jdc ffv sxfkc ksfckm",
     level: "Intermediate",
     imageUrl: "c1.png",
     popular: 'true'
