@@ -113,10 +113,13 @@ body{
   border-top-left-radius: 20px;
   cursor: pointer;
   border-right: 130px solid #38d39f;
+  transition: all 0.5s ease;
+
 }
 
 .wrapper.collapse .indiv{
   border-right: 131px solid #ffffff;
+  transition: all 0.5s ease;
 }
 
 .wrapper .top_navbar .indiv div{
@@ -469,7 +472,7 @@ footer .box a:hover {
   display: none;
 }
 
-.see-more-button{
+.see{
   margin: 20px auto;
   padding: 10px 20px;
   background-color: #38d39f;
@@ -479,7 +482,12 @@ footer .box a:hover {
   border-radius: 5px;
   transition: background-color 0.3s ease;
   cursor: pointer;
+  margin-top: 20px;
+  margin-left: 20px;
 }
+
+
+
  </style>
 </head>
 <body>
@@ -582,7 +590,8 @@ footer .box a:hover {
       <!-- Course card content for the fourth course -->
     </div>
   </div>
-  <button class="see-more-button" onclick="showMore('trending-course-container')">Show More</button>
+  <a href="trending.html" type="button" class="see" onclick="showMore('trending-course-container')"> Show More</a>
+  
 </div>
 
 <div class="UserPreference">
@@ -602,6 +611,9 @@ footer .box a:hover {
       <!-- Course card content for the fourth course -->
     </div>
   </div>
+
+  <a href="user.html" type="button" class="see" onclick="showMore('user-preference-course-container')"> Show More</a>
+
 </div>  
 
 <div class="FreeCourses">
@@ -621,7 +633,9 @@ footer .box a:hover {
       <!-- Course card content for the fourth course -->
     </div>
   </div>
+  <a href="free.html" type="button" class="see" onclick="showMore('free-course-container')"> Show More</a>
 </div>
+
 
 
 </div>
@@ -642,6 +656,7 @@ footer .box a:hover {
 	
 
 <script>
+  //upper slider
 	let slideIndex = 0;
 	showSlides();
 
@@ -836,22 +851,25 @@ function displayCourses() {
 
 
 // Display trending courses
-const trendingCourse = {
+const trendingCourseFilter = {
   popular: 'true'
 };
-displayCourses(trendingCourse, 'trending-course-container');
+
+displayCourses(trendingCourseFilter, 'trending-course-container');
+
 
 // Display user preference courses
-const userPreference = {
+const userPreferenceCourseFilter = {
   level: 'Beginner'
 };
-displayCourses(userPreference, 'user-preference-course-container');
+displayCourses(userPreferenceCourseFilter, 'user-preference-course-container');
 
-const FreeCourses = {
+
+const FreeCoursesFilter = {
   price: 'free'
 };
+displayCourses(FreeCoursesFilter, 'free-course-container');
 
-displayCourses(FreeCourses, 'free-course-container');
 
 function displayCourses(courseFilter, containerId) {
   const courseContainer = document.getElementById(containerId);
@@ -864,39 +882,43 @@ function displayCourses(courseFilter, containerId) {
     return true;
   });
 
-  filteredCourses.forEach(course => {
-    const card = createCourseCard(course);
+  const numToShow = 4;
+  for(let i = 0; i < numToShow && i < filteredCourses.length; i++) {
+    const card = createCourseCard(filteredCourses[i]);
     courseContainer.appendChild(card);
-  });
+  }
 
-
+  if(filteredCourses.length > numToShow) {
+    const showMoreButton = document.createElement('button');
+    showMoreButton.classList.add('see-button');
+    showMoreButton.textContent = 'Show More';
+    showMoreButton.onclick = () => showMore(containerId);
+    courseContainer.appendChild(showMoreButton);
+  }
 }
 
 function showMore(containerId) {
   const courseContainer = document.getElementById(containerId);
-  const courseCards = courseContainer.querySelectorAll('.course-card');
 
-  // Initially, show 4 courses. Show additional 4 when "Show More" is clicked.
+  const courseCards = courseContainer.querySelectorAll('.course-card.hidden');
   const numToShow = 4;
-  const numCurrentlyShown = document.querySelectorAll(`#${containerId} .course-card:not(.hidden)`).length;
-  const numToShowNow = numCurrentlyShown + numToShow;
 
-  for (let i = numCurrentlyShown; i < numToShowNow && i < courseCards.length; i++) {
+  for (let i = 0; i < numToShow && i < courseCards.length; i++) {
     const card = courseCards[i];
     card.classList.remove('hidden');
   }
 
-  // Hide the "Show More" button if all courses are shown
-  const moreCoursesHidden = document.querySelectorAll(`#${containerId} .course-card.hidden`).length > 0;
-  const showMoreButton = document.querySelector(`#${containerId} .see-more-button`);
+  // Check if there are more hidden cards
+  const remainingHiddenCards = courseContainer.querySelectorAll('.course-card.hidden');
 
-  if (moreCoursesHidden) {
-    showMoreButton.style.display = 'block';
-  } else {
-    showMoreButton.style.display = 'none';
+  if (remainingHiddenCards.length === 0) {
+    // If no more hidden cards, hide the "Show More" button
+    const showMoreButton = document.querySelector(`#${containerId} .see-button`);
+    if (showMoreButton) {
+      showMoreButton.style.display = 'none';
+    }
   }
 }
-
 // Initially hide all but the first 4 courses
 function initializeCourseVisibility() {
   const courseContainers = document.querySelectorAll('.course-container');
@@ -910,23 +932,24 @@ function initializeCourseVisibility() {
     }
 
     // Show the "Show More" button only if there are more than 4 courses initially
-    if (courseCards.length > 4) {
-      const showMoreButton = document.createElement('button');
-      showMoreButton.classList.add('see-more-button');
-      showMoreButton.textContent = 'Show More';
-      showMoreButton.onclick = () => showMore(courseContainer.id);
+ // Show the "Show More" button only if there are more than 4 courses initially
+if (courseCards.length > 12) {
+  const existingShowMoreButton = document.querySelector(`#${courseContainer.id} .see`);
+  if (!existingShowMoreButton) {
+    const showMoreButton = document.createElement('button');
+    showMoreButton.classList.add('see');
+    showMoreButton.textContent = 'Show More';
+    showMoreButton.onclick = () => showMore(courseContainer.id);
 
-      courseContainer.parentNode.insertBefore(showMoreButton, courseContainer.nextSibling);
-    }
+    courseContainer.parentNode.insertBefore(showMoreButton, courseContainer.nextSibling);
+  }
+}
+
   });
 }
 
 // Call the initialization function
 initializeCourseVisibility();
-
-
-
-
 </script>
 </body>
 </html>
