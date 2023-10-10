@@ -891,7 +891,6 @@ function displayCourses(courseFilter, containerId) {
   if(filteredCourses.length > numToShow) {
     const showMoreButton = document.createElement('button');
     showMoreButton.classList.add('see-button');
-    showMoreButton.textContent = 'Show More';
     showMoreButton.onclick = () => showMore(containerId);
     courseContainer.appendChild(showMoreButton);
   }
