@@ -502,7 +502,7 @@ body {
       level: "Intermediate",
       imageUrl: "c1.png",
       popular: 'true',
-      price: "1000",
+      price: "$1000",
       time: "2 weeks",
       modules: [
         {
@@ -546,7 +546,9 @@ if (course) {
   document.querySelector(".course_image").style.backgroundImage = `url(${course.imageUrl})`;
   document.getElementById("course_description").innerText = course.description;
   document.getElementById("course_time").innerText = `Time: ${course.time}`; 
-  document.querySelector(".course_enroll").innerHTML = `<a href="payment.html"><button>Enroll</button></a>`;
+  //on button show price of course
+  document.getElementById("course_enroll").innerHTML = `<button>Enroll for ${course.price}</button>`;
+
 
   //course module content
   const moduleList = document.getElementById("module_list");
