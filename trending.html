@@ -438,6 +438,9 @@ footer .box a:hover {
 
 .Trending .course-card h3, .UserPreference .course-card h3 , .FreeCourses .course-card h3 {
   font-size: 18px;
+  overflow: hidden;
+      text-overflow: ellipsis;
+     white-space: nowrap; 
 }
 
 .Trending .course-card p, .UserPreference .course-card p , .FreeCourses .course-card p {
@@ -580,8 +583,8 @@ footer .box a:hover {
   //course-card
   const courses = [
   {
-    title: "Course 1",
-    description: "Description for Course 1 jdc ffv sxfkc ksfckm",
+    title: "Course svvvvvvvvvvvvvvvvvvvvvvvx1",
+    description: "Description for Course 1 jdc ffxvc v sxfkc ksfckm",
     level: "Intermediate",
     imageUrl: "c1.png",
     popular: 'true'
@@ -729,7 +732,7 @@ footer .box a:hover {
   const card = document.createElement('div');
   card.classList.add('course-card');
   card.innerHTML = `
-    <img src="${course.imageUrl}" alt="${course.title}" style="width: 100%; height: auto;">
+    <img src="${course.imageUrl}"  style="width: 100%; height: auto;">
     <h3>${course.title}</h3>
     <p>${course.description}</p>
     <p>Level: ${course.level}</p>
