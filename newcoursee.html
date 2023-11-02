@@ -1,0 +1,54 @@
+<form method="POST" action="{{ route('processForm') }}">
+    course name
+    <!-- Main course fields -->
+    <input type="text" name="courseName" required><br>
+    course description
+    <input type="text" name="courseDescription" required>
+
+    <!-- Modules section -->
+    <div id="modulesContainer">
+        <h2>Modules</h2>
+        <!-- Dynamically added module fields go here -->
+    </div>
+
+    <!-- Button to add new modules -->
+    <button type="button" id="addModuleButton">Add Module</button>
+
+    <button type="submit">Submit</button>
+</form>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const modulesContainer = document.getElementById('modulesContainer');
+        const addModuleButton = document.getElementById('addModuleButton');
+        let moduleCounter = 0;
+
+        addModuleButton.addEventListener('click', function () {
+            addModuleField();
+        });
+
+        function addModuleField() {
+            const moduleDiv = document.createElement('div');
+            moduleDiv.classList.add('module');
+
+            const moduleNameInput = document.createElement('input');
+            moduleNameInput.type = 'text';
+            moduleNameInput.name = `modules[${moduleCounter}][name]`;
+            moduleNameInput.placeholder = 'Module Name';
+            moduleNameInput.required = true;
+
+            const moduleVideoInput = document.createElement('input');
+            moduleVideoInput.type = 'file';
+            moduleVideoInput.name = `modules[${moduleCounter}][video]`;
+            moduleVideoInput.accept = 'video/*';
+            moduleVideoInput.required = true;
+
+            moduleDiv.appendChild(moduleNameInput);
+            moduleDiv.appendChild(moduleVideoInput);
+
+            modulesContainer.appendChild(moduleDiv);
+
+            moduleCounter++;
+        }
+    });
+
+</script>
