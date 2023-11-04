@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
            		   <div class="div">
            		   		<h5>Username</h5>
            		   		<input type="text" class="input" name="username">
+                              <span	class="error"></span>
            		   </div>
            		</div>
            		<div class="input-div pass">
