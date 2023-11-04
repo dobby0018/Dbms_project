@@ -349,6 +349,44 @@ body {
  margin-left: 20px;
 }
 
+
+.pt{
+ margin-top: 20px;
+ font-size: 20px;
+ display: flex;
+}
+
+.price{
+ margin-top: 20px;
+ font-size: 20px;
+}
+
+.price input{
+ margin-top: 20px;
+  font-size: medium;
+  width: 100px;
+  margin-left: 20px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+} 
+
+.time{
+ margin-top: 20px;
+ font-size: 20px;
+ margin-left: 30px;
+}
+
+.time input{
+ margin-top: 20px;
+  font-size: medium;
+  width: 100px;
+  margin-left: 20px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
 #module-container{
 	 margin-top: 30px;
  font-size: 20px;
@@ -403,9 +441,22 @@ form button{
 	  font-size: medium;
 	  margin-left: 20px;
 	  height: 40px;
-
-
 }
+
+.pic{
+  margin-top: 30px;
+   font-size: 20px;
+}
+
+.pic input{
+  margin-top: 20px;
+    font-size: medium;
+    margin-left: 20px;
+}
+
+
+
+
   </style>
 </head>
 
@@ -466,6 +517,25 @@ form button{
        Course Description:
        <textarea name="Description_box" required >
        </textarea>
+      </div>
+
+      <div class="pt">
+        <div class="price">
+          Price:
+          <input type="number" required >
+        </div>
+        <div class="time">
+          Time:
+          <input type="text" required >
+        </div>
+      </div>
+
+      <!--Image-->
+      <div class="pic">
+        <label for="file-upload" class="custom-file-upload">
+          <i class="fa fa-cloud-upload"></i> Upload Image
+        </label>
+        <input id="file-upload" type="file" accept="image/*" required />
       </div>
 
 		<!--Adding modules-->
