@@ -358,29 +358,15 @@ body {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
-  margin-right: 170px;
+  margin-right: 80px;
 }
 
 .course_level {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
-  margin-right: 170px;
+  margin-right: 80px;
 }
-
-.course_enroll button {
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: 700;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  background: #38d39f;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
 
 .course_content {
   border: #000000 1px solid;
@@ -389,6 +375,105 @@ body {
   color: #000000;
   transform: translate(250px, 10px);
   padding: 10px;
+}
+
+
+.course_enroll {
+  margin-right: 40x;
+}
+
+.del{
+  margin-left: 20px;
+}
+
+    .module {
+      border: #000000 1px solid;
+      width: 100%;
+      height: 100%;
+      font-size: 10px;
+      color: #000000;
+    }
+
+    .module h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      margin-left: 40px;
+    }
+
+    .module p {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      margin-left: 40px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+     white-space: nowrap; 
+    }
+
+    .module iframe {
+      margin-left: 40px;
+      height: 50%;
+      width: 40%;
+      margin-bottom: 10px;
+    }
+
+  .module button{
+    margin-left: 40px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #38d39f;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+    .table-of-contents {
+  margin-top: 20px;
+  width: 100%; 
+}
+
+
+  .table-of-contents h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-left: 40px;
+  }
+
+  .table-of-contents ul {
+    list-style-type: none;
+  }
+
+  .table-of-contents li {
+    margin-left: 40px;
+    margin-bottom: 10px;
+  }
+
+  .table-of-contents li:before {
+    margin-right: 10px;
+    color: #38d39f;
+    font-size: 20px;
+  }
+
+  .table-of-contents p {
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 20px;
+  }
+
+  .modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 0px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb
 }
 
     .module {
@@ -480,7 +565,6 @@ body {
 	  overflow: auto;
 	  background-color: rgb(0,0,0);
 	  background-color: rgba(0,0,0,0.4);
-
   }
 
   .modal-content{
@@ -626,6 +710,11 @@ body {
           <!-- Edit course button -->
 		  <button id="editButton">Edit</button>
         </div>
+        <div class="del">
+          <!-- Delete course button -->
+          <button id="DeleteButton">Delete Course</button>
+        </div>
+
       </div>
 		
       <div class="course_content" id="course_content">
